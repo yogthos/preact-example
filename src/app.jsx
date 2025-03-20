@@ -1,14 +1,15 @@
 import { render } from 'preact';
-import { useState } from 'preact/hooks';
+import { useAtom } from 'jotai';
+import { nameAtom } from './atoms';
 import Counter from './components/Counter';
 import Greeting from './components/Greeting';
 
 export function App() {
-  const [name, setName] = useState('');
+  const [name, setName] = useAtom(nameAtom);
 
   return (
     <div class="app">
-      <Greeting name={name || undefined} />
+      <Greeting />
       
       <input
         type="text"

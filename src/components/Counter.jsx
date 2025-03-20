@@ -1,12 +1,13 @@
-import { useState } from 'preact/hooks';
+import { useAtom } from 'jotai';
+import { countAtom } from '../atoms';
 
 export default function Counter() {
-  const [count, setCount] = useState(0);
+  const [count, setCount] = useAtom(countAtom);
 
   return (
     <div class="counter">
       <h2>Counter: {count}</h2>
-      <button onClick={() => setCount(count + 1)}>Increment</button>
+      <button onClick={() => setCount(c => c + 1)}>Increment</button>
       <button onClick={() => setCount(0)}>Reset</button>
     </div>
   );
