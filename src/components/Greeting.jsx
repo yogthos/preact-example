@@ -1,18 +1,23 @@
 import { atom, useAtom } from 'jotai';
 
-const nameAtom = atom('World');
+const userAtom = atom('');
 
-export default function Greeting() {
-  const [name, setName] = useAtom(nameAtom);
+export function Greeting() {
+  const [user, setUser] = useAtom(userAtom);
   return (
     <div class="greeting">
-      <h1>Hello, {name || 'World'}!</h1>
+      <h1>Hello, {user.name || 'World'}!</h1>
       <input
         type="text"
         placeholder="Enter your name"
-        value={name}
-        onInput={(e) => setName(e.target.value)}
+        value={user.name}
+        onInput={(e) => setUser({name: e.target.value})}
       />
     </div>
   );
+}
+
+export function getUser() {
+  const [user] = useAtom(userAtom);
+  return user;
 }

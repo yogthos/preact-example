@@ -1,8 +1,7 @@
 import { render } from 'preact';
-import { Router, Link } from 'preact-router';
+import { Router, Link, route } from 'preact-router';
 import Counter from './components/Counter';
-import Greeting from './components/Greeting';
-
+import {Greeting, getUser } from './components/Greeting';
 
 // Page components
 const Home = () => (
@@ -24,12 +23,13 @@ const About = () => (
   </div>
 );
 
-const Profile = ({ user, ...props }) => {
+const Profile = () => {
+  const user = getUser();
   return (
     <div class="page">
-      <h2>Profile: {user || 'you'}</h2>
-      <p>This is some text about {user || 'you'}.</p>
-      <pre>{JSON.stringify({ user, ...props }, 0, '  ')}</pre>
+      <h2>Profile: {user.name}</h2>
+      <p>This is some text about {user.name}.</p>
+      <pre>{JSON.stringify(user)}</pre>
     </div>
   );
 };
@@ -40,6 +40,14 @@ const NotFound = () => (
     <p>The requested page doesn't exist.</p>
   </div>
 );
+
+function WithUser({user, children }) {
+  console.log('>>>', user);
+  if (!getUser()) {
+    route('/');
+  }
+  return <>{children}</>;
+}
 
 export function App() {
   return (
@@ -53,7 +61,7 @@ export function App() {
       <Router>
         <Home path="/" />
         <About path="/about" />
-        <Profile path="/profile/:user?" />
+        <WithUser path="/profile/:user?"> <Profile/> </WithUser>
         <NotFound type="404" default />
       </Router>
 
