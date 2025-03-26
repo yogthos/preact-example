@@ -1,5 +1,6 @@
-import { useAtom } from 'jotai';
-import { countAtom } from '../atoms';
+import { atom, useAtom } from 'jotai';
+
+const countAtom = atom(0);
 
 export default function Counter() {
   const [count, setCount] = useAtom(countAtom);
