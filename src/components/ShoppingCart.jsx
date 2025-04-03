@@ -22,7 +22,7 @@ function ShoppingCart() {
       cartItems.value = [
         ...cartItems.value,
         {
-          id: Date.now(),
+          id: self.crypto.randomUUID(),
           name: newItemName.value,
           price: parseFloat(newItemPrice.value),
           quantity: 1
