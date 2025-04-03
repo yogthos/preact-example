@@ -1,2 +1,28 @@
 @import 'bulma/css/bulma.min.css';
 @import '@fortawesome/fontawesome-free/css/all.min.css';
+
+.cart-container {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+.cart-item {
+  border: 1px solid #ddd;
+  padding: 15px;
+  margin: 10px 0;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.quantity-controls {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+input {
+  margin: 5px;
+  padding: 5px;
+}
