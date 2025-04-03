@@ -1,16 +1,15 @@
-import { userAtom } from '../atoms';
-import { useAtom } from 'jotai';
-import { Greeting } from './Greeting';
-import { Counter } from './Counter';
+import EditableTable from './Table';
 
 export default function Home(_props) {
-    const [user] = useAtom(userAtom);
-    return (
-      <div class="page">
-        <h1>Home Page</h1>
-        <p>Welcome to our website!</p>        
-        <Greeting />
-        <Counter />
+  return (
+    <section class="section">
+      <div class="container">
+        <div class="content">
+          <h1>Home Page</h1>
+          <p>Welcome to our website!</p>
+          <EditableTable />
+        </div>
       </div>
-    );
-  };
+    </section>
+  );
+};
